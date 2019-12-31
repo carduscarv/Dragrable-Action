@@ -11,10 +11,10 @@ public class LevelManager : Singleton<LevelManager>
     [SerializeField]
     private CameraMovement cameraMovement;
 
-    private Point gateClose, gateOpen, charPos;
+    private Point putObject, gateOpen, charPos;
     
     [SerializeField]
-    private GameObject gateClosePrefab;
+    private GameObject putObjectPrefab;
 
     [SerializeField]
     private GameObject gateOpenPrefab;
@@ -92,8 +92,8 @@ public class LevelManager : Singleton<LevelManager>
     }
 
     private void SpawnGate(){
-        gateClose = new Point(0, 0);
-        Instantiate(gateClosePrefab, Tiles[gateClose].GetComponent<TileScript>().WorldPosition, Quaternion.identity);
+        putObject = new Point(5, 4);
+        Instantiate(putObjectPrefab, Tiles[putObject].GetComponent<TileScript>().WorldPosition, Quaternion.identity);
 
         gateOpen = new Point(12, 6);
         Instantiate(gateOpenPrefab, Tiles[gateOpen].GetComponent<TileScript>().WorldPosition, Quaternion.identity);
@@ -102,6 +102,5 @@ public class LevelManager : Singleton<LevelManager>
     private void SpawnCharacter(){
         charPos = new Point(5, 3);
         _char = Instantiate(charPrefab, Tiles[charPos].GetComponent<TileScript>().WorldPosition, Quaternion.identity).GetComponent<CharacterControllers>();
-        Debug.Log(_char.transform.position);
     }
 }

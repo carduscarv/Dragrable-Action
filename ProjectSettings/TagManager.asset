@@ -11,6 +11,7 @@ TagManager:
   - BtnReset
   - Tiles
   - Destination
+  - Put
   layers:
   - Default
   - TransparentFX

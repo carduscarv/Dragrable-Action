@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
 
 public class LevelManager : Singleton<LevelManager>
@@ -29,12 +30,17 @@ public class LevelManager : Singleton<LevelManager>
 
     public Dictionary<Point, TileScript> Tiles {get; set;}
 
+    Scene scene;
+
     public float TileSize {
        get { return tilePrefab[0].GetComponent<SpriteRenderer>().sprite.bounds.size.x; }
     }
     // Start is called before the first frame update
     void Start()
     {
+        scene = SceneManager.GetActiveScene();
+        Debug.Log("Name: " + scene.name);
+
         Point p = new Point(0,0);
         Createlevel();
     }
@@ -84,9 +90,14 @@ public class LevelManager : Singleton<LevelManager>
     }
 
     private string[] ReadTextLevel(){
-        TextAsset bindData = Resources.Load("TilesMap") as TextAsset;
+        string data = null;
+        if (scene.name == "SampleScene")
+        {
+            TextAsset bindData = Resources.Load("TilesMap") as TextAsset;
+            Debug.Log(scene.name);
 
-        string data = bindData.text.Replace(Environment.NewLine, string.Empty);
+            data = bindData.text.Replace(Environment.NewLine, string.Empty);
+        }
 
         return data.Split('-');
     }

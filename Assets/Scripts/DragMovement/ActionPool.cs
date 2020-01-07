@@ -136,7 +136,7 @@ public class ActionPool : MonoBehaviour
         _count = -1;
         _loopIndex = 0;
         allActionMoves.Clear();
-        _moveNow = false; 
+        _moveNow = false;
     }
 
     // jika bisa bergerak dan tidak ada waktu tunggu, jalankan gerakan, perintahkan karakter untuk bergerak
@@ -148,6 +148,7 @@ public class ActionPool : MonoBehaviour
             _index++;
         }else{
             // jika semua gerakan sudah dilakukan, reset
+            character.EnableCollider();
             ResetMoves();
             _index = 0;
         }

@@ -39,7 +39,6 @@ public class LevelManager : Singleton<LevelManager>
     void Start()
     {
         scene = SceneManager.GetActiveScene();
-        Debug.Log("Name: " + scene.name);
 
         Point p = new Point(0,0);
         Createlevel();
@@ -106,7 +105,10 @@ public class LevelManager : Singleton<LevelManager>
         putObject = new Point(5, 4);
         Instantiate(putObjectPrefab, Tiles[putObject].GetComponent<TileScript>().WorldPosition, Quaternion.identity);
 
-        gateOpen = new Point(12, 6);
+        putObject = new Point(5, 5);
+        Instantiate(putObjectPrefab, Tiles[putObject].GetComponent<TileScript>().WorldPosition, Quaternion.identity);
+
+        gateOpen = new Point(7, 5);
         Instantiate(gateOpenPrefab, Tiles[gateOpen].GetComponent<TileScript>().WorldPosition, Quaternion.identity);
     }
 

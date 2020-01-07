@@ -12,6 +12,8 @@ TagManager:
   - Tiles
   - Destination
   - Put
+  - Failed
+  - Success
   layers:
   - Default
   - TransparentFX
